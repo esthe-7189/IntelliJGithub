@@ -23,33 +23,40 @@
     </style>
 </th:block>
 
-<div layout:fragment="content">
 
-
+<div layout:fragment="content" class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+<div class="containers">
+    <div class="content-main">
     <input type="hidden" name="searchQuery" th:value="${itemSearchDto.searchQuery}">
     <div th:if="${not #strings.isEmpty(itemSearchDto.searchQuery)}" class="center">
         <p class="h3 font-weight-bold" th:text="${itemSearchDto.searchQuery} + '검색 결과'"></p>
     </div>
-
-    <div class="row">
+<!--모바일 1개 :row-cols-1 / pc는 4개 진열:row-cols-md-4-->
+    <div class="row row-cols-1 row-cols-md-3 g-4">
         <th:block th:each="item, status: ${items.getContent()}">
-            <div class="col-md-4 margin">
-                <div class="card">
-                    <a th:href="'/item/' +${item.id}" class="text-dark">
-                        <img th:src="${item.imgUrl}" class="card-img-top" th:alt="${item.itemNm}" height="400">
-                        <div class="card-body">
-                            <h4 class="card-title">[[${item.itemNm}]]</h4>
-                            <p class="card-text">[[${item.itemDetail}]]</p>
-                            <h3 class="card-title text-danger">[[${item.price}]]원</h3>
+            <div class="col margin">
+                <div class="card shadow-sm">
+                    <a th:href="'/item/' +${item.id}" class="text-dark text-decoration-none">
+                        <img th:src="${item.imgUrl}" class="card-img-top" th:alt="${item.itemNm}" height="">
+                        <div class="card-body text-start">
+                            <h5 class="card-title lh-1">[[${item.itemNm}]]</h5>
+                            <p class="card-text lh-1">[[${item.itemDetail}]]</p>
+                            <p class="card-title text-danger title" data-th-text="${#numbers.formatInteger(item.price, 3, 'COMMA') + '원'}"></p>
+
                         </div>
                     </a>
                 </div>
             </div>
         </th:block>
     </div>
+    </div>
 
+</div>
+
+        <div class="align-items-center justify-content-center mb-5 bg-white" style="width:100%;">
+ <!--페이징
     <div th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})" >
-        <ul class="pagination justify-content-center">
+        <ul class="pagination justify-content-center ">
 
             <li class="page-item" th:classappend="${items.number eq 0}?'disabled':''">
                 <a th:href="@{'/' + '?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number-1}}" aria-label='Previous' class="page-link">
@@ -68,6 +75,9 @@
             </li>
 
         </ul>
-    </div>
+    </div>-->
+
+        </div>
+
 
 </div>

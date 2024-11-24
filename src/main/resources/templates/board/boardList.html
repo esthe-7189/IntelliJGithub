@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+
+
+
+<div layout:fragment="content"  class="container mg-container">
+    <h2>게시판</h2>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <td>No</td>
+            <td>Title</td>
+            <td>작성자</td>
+            <td>Date</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>문의사항 있어요</td>
+            <td>이미미</td>
+            <td>2014-05-01</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="form-inline justify-content-center" >
+
+        <select  class="form-control ml-1 mr-1" style="width:auto;">
+            <option value="title">타이틀</option>
+            <option value="write">작성자</option>
+        </select>
+        <input  type="text" class="form-control ml-1 mr-1 " placeholder="검색어를 입력해주세요">
+        <button id="searchBtn" type="submit" class="btn btn-dark ml-1 mr-1">검색</button>
+    </div>
+</div>
+</html>

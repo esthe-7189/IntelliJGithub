@@ -5,13 +5,19 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <!-- CSS only -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link th:href="@{/css/layout1.css}" rel="stylesheet">
+    <link th:href="@{/css/headers.css}" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/examples/headers/" rel="canonical">
+    <link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 
     <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/color-modes.js}"></script>
+    <!--js, header-->
 
 
     <th:block layout:fragment="script"></th:block>
@@ -33,6 +39,7 @@
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 overflow: hidden;
+
             }
             a:hover{
                 text-decoration:none;
@@ -40,29 +47,79 @@
             .center{
                 text-align:center;
             }
+            .fixed01{
+                width: 100%; height: 300px;
+
+                /* 배경이미지는 최소 1920*960으로 제작 */
+                background-image: url(/images/vi01.png);
+                background-repeat: no-repeat; /* 배경이미지X */
+                background-size: cover; /* 요소를 비율에 맞게 커버 */
+                background-position: center; /* 이미지를 요소의 정가운데로 처리 */
+                background-attachment: fixed; /* 스크롤바 움직일때 이미지가 따라다님 */
+            }
         </style>
 
     </th:block>
 </head>
 <body>
-<div th:replace="~{fragments/header::header}"></div>
+<div th:replace="~{fragments/header::headers}"></div>
+<div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="false">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+            <img src="/images/item/visual01_1920.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>First slide label</h5>
+                <p>Some representative placeholder content for the first slide.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/images/item/visual02_1920.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Second slide label</h5>
+                <p>Some representative placeholder content for the second slide.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/images/item/visual01_1920.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Third slide label</h5>
+                <p>Some representative placeholder content for the third slide.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
 
-<div>
-    <div id="carouselControls" class="carousel slide margin" data-ride="carousel">
+
+<!--
+<div style="background-size: cover;position:fixed;width:100%;">
+    <div id="carouselControls" class="carousel slide margin "  data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active item">
-                <img class="d-block w-100 banner" src="https://user-images.githubusercontent.com/13268420/112147492-1ab76200-8c20-11eb-8649-3d2f282c3c02.png" alt="First slide">
+            <div class="carousel-item active item"  >
+                <img class="d-block w-100 banner" src="https://img.freepik.com/free-photo/isolated-cactus-pot-with-copy-space_23-2148301057.jpg?t=st=1732149844~exp=1732153444~hmac=7f8b4e557622a157914bb95529ff9c5ef694a995ff458c559449f45f4dd37833&w=1290" alt="First slide">
             </div>
         </div>
     </div>
 </div>
-
-<div layout:fragment="content" class="content">
+-->
+<div layout:fragment="content" class="content" >
 
 </div>
 
 <div th:replace="~{fragments/footer::footer}"></div>
 
-
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

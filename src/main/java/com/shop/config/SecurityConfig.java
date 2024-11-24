@@ -33,7 +33,7 @@ public class SecurityConfig {
 
         http.authorizeRequests()
                 .requestMatchers("/css/**", "/js/**", "/img/**").permitAll() //permitAll()은 모든이 접근
-                .requestMatchers("/", "/members/**", "/item/**", "/images/**").permitAll()
+                .requestMatchers("/", "/members/**", "/item/**", "/images/**","/board/**").permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN") //admin role일 경우만 접근
                 .anyRequest().authenticated() //위에서 설정한 경로를 제외한 나머지는 모두 인증요구
         ;
